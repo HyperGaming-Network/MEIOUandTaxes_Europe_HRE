@@ -1,0 +1,908 @@
+# Hard-coded functions made fully or partly scripted
+#
+# Note that most functions use unique mechanics
+
+# ROOT = country
+can_join_hre_league = {
+	condition = {
+		# tooltip = "CANNOT_JOIN_LEAGUE_AT_WAR"
+		tooltip = "dg_cannot_join_league"
+		potential = {
+		}
+		allow = {
+			OR = {
+				capital_scope = { is_part_of_hre = yes }
+				has_global_flag = first_league_war
+				is_emperor = yes
+			}
+			OR = {
+				religion = catholic
+				religion = protestant
+				religion = reformed
+				religion = hussite
+			}
+			is_at_war = no
+			capital_scope = { continent = europe }
+			#is_free_or_tributary_trigger = yes
+			OR = {
+				is_subject = no
+				is_subject_of_type = tributary_state
+			}
+		}
+	}
+}
+
+can_leave_hre_league = {
+}
+
+can_harsh_treatment = {
+}
+
+can_reduce_war_exhaustion = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_reduce_inflation = {
+}
+
+can_declare_bankruptcy = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_make_state = {
+}
+
+can_abandon_state = {
+}
+
+can_improve_tax = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_improve_production = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_improve_manpower = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			owner = { ai = no }
+		}
+	}
+}
+
+can_exploit_tax = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_exploit_production = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_exploit_manpower = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_make_core = {
+	condition = {
+		tooltip = "tt_core_conditions"
+		potential = {
+			always = yes
+		}
+		allow = {
+			OR = {
+				AND = {
+					NOT = { unrest = 0.1 }
+					NOT = { has_province_modifier = martial_law }
+				}
+				has_construction = core
+				is_territorial_core = ROOT
+			}
+		}
+	}
+}
+
+can_release_colonial_nation = {
+	condition = {
+		tooltip = "CAN_RELEASE_CN_WE_ARE_AT_WAR"
+		potential = {
+		}
+		allow = {
+			is_at_war = no
+		}
+	}
+}
+
+can_increase_stability = {
+	condition = {
+		tooltip = "stability_button_gone"
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_add_province_to_hre = {
+	condition = {
+		tooltip = "APH_NOT_OWNED_CONTROLLED"
+		potential = {
+			#holy_roman_empire_trigger = yes
+			always = yes
+		}
+		allow = {
+			owned_by = FROM
+			controlled_by = FROM
+		}
+	}
+	condition = {
+		tooltip = "NORTHERN_ITALIANS_NOT_JOIN_HRE"
+		potential = {
+			#holy_roman_empire_trigger = yes
+			always = yes
+		}
+		allow = {
+			owner = {
+				NOT = {
+					ai = yes
+					capital_scope = { superregion = italy_superregion }
+					tag = PAP
+				}
+			}
+			NOT = { is_part_of_hre = yes }
+		}
+	}
+}
+
+can_remove_province_from_hre = {
+	condition = {
+		tooltip = "RPH_AT_WAR"
+		potential = {
+		}
+		allow = {
+			owner = { is_at_war = no }
+		}
+	}
+	condition = {
+		tooltip = "RPH_SUBJECT"
+		potential = {
+		}
+		allow = {
+			owner = {
+				#is_free_or_tributary_trigger = yes
+				OR = {
+					is_subject = no
+					is_subject_of_type = tributary_state
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = "RPH_TRUCE_EMP"
+		potential = {
+		}
+		allow = {
+			owner = { NOT = { truce_with = emperor } }
+		}
+	}
+}
+
+can_increase_autonomy = {
+	condition = {
+		tooltip = condition_commmunication_efficiency_calculated_tooltip
+		potential = {
+			AND = {
+				always = yes
+				AI = no
+			}
+		}
+		allow = {
+			has_any_communication_efficiency_modifier_trigger = yes
+		}
+	}
+}
+
+can_decrease_autonomy = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no			#disabled by MND, pending on_action control, removing makework, autonomy is balanced to account for this.
+		}
+	}
+}
+
+can_claim_defender_of_faith = {
+	condition = {
+		tooltip = "dg_low_piety_message"
+		potential = {
+		}
+		allow = {
+			piety = 0.20
+		}
+	}
+	condition = {
+		tooltip = "dg_not_1800_message"
+		potential = {
+		}
+		allow = {
+			tech_1800_trigger = yes
+		}
+	}
+}
+
+can_change_national_focus = {
+}
+
+# ROOT = province, FROM = country
+can_change_culture = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_move_capital = {
+}
+
+can_move_trade_port = {
+}
+
+can_order_assault = {
+}
+
+can_order_force_march = {
+}
+
+can_scorch_earth = {
+}
+
+can_garrison_sorties = {
+}
+
+can_seize_colony = {
+}
+
+can_burn_colony = {
+	condition = {
+		potential = {
+			always = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+can_colonize_province = {
+	condition = {
+		tooltip = "SIBERIA_TT"
+		potential = {
+			OR = {
+				region = north_russia_region
+				region = east_russia_region
+				region = steppes_region
+				region = west_siberia_region
+				region = kazakh_region
+			}
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+					has_active_policy = siberia_colonisation_act
+					has_ruler_modifier = siberia_colonisation_active
+				}
+			}
+			any_neighbor_province = {
+				owned_by = FROM
+				controlled_by = FROM
+			}
+		}
+	}
+	condition = {
+		tooltip = "LAPPMARKEN_KOLA_TT"
+		potential = {
+			OR = {
+				region = finland_region
+				region = scandinavia_region
+			}
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+					has_active_policy = lappmarken_colonisation_act
+					has_ruler_modifier = lappmarken_colonisation_active
+					has_active_policy = karelia_colonisation_act
+					has_ruler_modifier = karelia_colonisation_active
+				}
+			}
+			any_neighbor_province = {
+				owned_by = FROM
+				controlled_by = FROM
+			}
+		}
+	}
+	condition = {
+		tooltip = "GREENLAND_TT"
+		potential = {
+			province_id = 1104
+		}
+		allow = {
+			FROM = {
+				dip_tech = 25
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+					has_active_policy = greenland_colonisation_act
+					has_ruler_modifier = greenland_colonisation_active
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = "BALUCHISTAN_TT"
+		potential = {
+			OR = {
+				area = baluchi_area
+				area = quetta_area
+			}
+		}
+		allow = {
+			any_neighbor_province = {
+				owned_by = FROM
+				controlled_by = FROM
+			}
+		}
+	}
+	condition = {
+		tooltip = "AFRICA_COAST_TRADE_TT"
+		potential = {
+			africa_continent_trigger = yes
+			has_province_modifier = trading_post_province
+		}
+		allow = {
+			FROM = {
+				OR = {
+					dip_tech = 40
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+					has_country_flag = early_exploration
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+	condition = {
+		tooltip = "AFRICA_COAST_OPEN_TT"
+		potential = {
+			africa_continent_trigger = yes
+			has_port = yes
+			NOT = { has_province_modifier = trading_post_province }
+		}
+		allow = {
+			FROM = {
+				OR = {
+					dip_tech = 40
+					AND = {
+						dip_tech = 35
+						capital_scope = { africa_continent_trigger = yes }
+						OR = {
+							is_colonial_nation = yes
+							is_former_colonial_nation = yes
+						}
+					}
+					AND = {
+						capital_scope = { africa_continent_trigger = yes }
+						is_colonial_nation = no
+						is_former_colonial_nation = no
+					}
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+			}
+			any_neighbor_province = {
+				owned_by = FROM
+				controlled_by = FROM
+			}
+		}
+	}
+	condition = {
+		tooltip = "AFRICA_INLAND_OPEN_TT"
+		potential = {
+			africa_continent_trigger = yes
+			has_port = no
+			NOT = { has_province_modifier = trading_post_province }
+		}
+		allow = {
+			FROM = {
+				OR = {
+					dip_tech = 50
+					AND = {
+						dip_tech = 45
+						capital_scope = { africa_continent_trigger = yes }
+						OR = {
+							is_colonial_nation = yes
+							is_former_colonial_nation = yes
+						}
+					}
+					AND = {
+						capital_scope = { africa_continent_trigger = yes }
+						is_colonial_nation = no
+						is_former_colonial_nation = no
+					}
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+			}
+			any_neighbor_province = {
+				owned_by = FROM
+				controlled_by = FROM
+			}
+		}
+	}
+	condition = {
+		tooltip = "SOUTH_WALES_OPEN_TT"
+		potential = {
+			area = southern_australia_area
+			has_port = yes
+		}
+		allow = {
+			FROM = {
+				dip_tech = 45
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+	condition = {
+		tooltip = "AUSTRALIA_OPEN_TT"
+		potential = {
+			continent = oceania
+			NOT = { AND = { area = southern_australia_area has_port = yes } }
+		}
+		allow = {
+			FROM = {
+				dip_tech = 50
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+	condition = {
+		tooltip = "AMAZONIA_OPEN_TT"
+		potential = {
+			OR = {
+				area = amazon_area
+				area = upper_guyana_area
+			}
+		}
+		allow = {
+			FROM = {
+				dip_tech = 40
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+	condition = {
+		tooltip = "ALASKA_OPEN_TT"
+		potential = {
+			OR = {
+				area = alaska_area
+				area = unalaska_area
+			}
+		}
+		allow = {
+			FROM = {
+				dip_tech = 45
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+	condition = {
+		tooltip = "KAMTCHATKA_OPEN_TT"
+		potential = {
+			OR = {
+				region = east_siberia_region
+				region = east_manchuria_region
+				region = west_manchuria_region
+			}
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+					has_active_policy = siberia_colonisation_act
+					has_ruler_modifier = siberia_colonisation_active
+				}
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+			any_neighbor_province = {
+				owned_by = FROM
+				controlled_by = FROM
+			}
+		}
+	}
+	condition = {
+		tooltip = "NORTH_JAPAN_OPEN_TT"
+		potential = {
+			region = east_japan_region
+		}
+		allow = {
+			FROM = {
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+			OR = {
+				FROM = { culture_group = japanese }
+				any_neighbor_province = {
+					owned_by = FROM
+					controlled_by = FROM
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = "MISKITO_OPEN_TT"
+		potential = {
+			province_id = 838 # Miskitu
+		}
+		allow = {
+			FROM = {
+				dip_tech = 35
+				OR = {
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+	condition = {
+		tooltip = "SOUTHEAST_ASIA_OPEN_TT"
+		potential = {
+			OR = {
+				continent = southeast_asia
+				area = taiwan_area
+			}
+		}
+		allow = {
+			FROM = {
+				OR = {
+					dip_tech = 40
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+	condition = {
+		tooltip = "NORTH_AMERICA_OPEN_TT"
+		potential = {
+			continent = north_america
+		}
+		allow = {
+			FROM = {
+				OR = {
+					dip_tech = 40
+					is_colonial_nation = yes
+					is_former_colonial_nation = yes
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+					capital_scope = { continent = north_america }
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+	condition = {
+		tooltip = "SOUTH_AMERICA_OPEN_TT"
+		potential = {
+			continent = south_america
+			NOT = { area = amazon_area }
+			NOT = { area = upper_guyana_area }
+		}
+		allow = {
+			FROM = {
+				OR = {
+					dip_tech = 40
+					has_idea = additional_colonists
+					has_idea = colonial_ventures
+					has_idea = promise_of_the_new_world
+					capital_scope = { continent = south_america }
+				}
+				NOT = { has_active_policy = siberia_colonisation_act }
+				NOT = { has_active_policy = lappmarken_colonisation_act }
+				NOT = { has_active_policy = karelia_colonisation_act }
+				NOT = { has_active_policy = greenland_colonisation_act }
+				NOT = { has_active_policy = african_migration_act }
+				NOT = { has_active_policy = hill_subjugation_act }
+				NOT = { has_ruler_modifier = siberia_colonisation_active }
+				NOT = { has_ruler_modifier = lappmarken_colonisation_active }
+				NOT = { has_ruler_modifier = karelia_colonisation_active }
+				NOT = { has_ruler_modifier = greenland_colonisation_active }
+				NOT = { has_ruler_modifier = african_migration_active }
+			}
+		}
+	}
+}
+
+can_colonize_province_siberian_frontier = {
+	condition = {
+		tooltip = "COLONIAL_FRONTIER"
+		potential = {
+			FROM = { is_colonial_nation = yes }
+		}
+		allow = {
+			FROM = { capital_scope = { colonial_region = ROOT } }
+		}
+	}
+}
+
+can_add_seat_in_parliament = {
+}
+
+can_add_estate = {
+#	condition = {
+#        tooltip = "POP_explanation_of_why_you_cannot_change_estates"
+#        potential = {
+#			always = no
+#		}
+#        allow = {
+#            always = no
+#        }
+#    }
+}
+
+can_expel_minority_from = {
+	condition = {
+		potential = {
+			always = no #disabled pending DG rework
+#			OR = {
+#				is_religious_center_province = yes
+#				is_reformation_center = yes
+#			}
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+### Special functions
+
+# Called by can_add_province_to_hre
+is_possible_hre_province = {
+	condition = {
+		tooltip = "APH_ONLY_EUROPE"
+		potential = {
+			continent = europe
+		}
+		allow = {
+			continent = europe
+		}
+	}
+}
