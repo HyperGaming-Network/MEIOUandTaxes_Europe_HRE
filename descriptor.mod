@@ -1,4 +1,4 @@
-name="MEIOU and Taxes Europe HRE Mod (Meiou 2.50)"
+name="MEIOU and Taxes Europe HRE Mod (Meiou 2.52.03)"
 archive="mod/meiouandtaxes_europe_hre.zip"
 dependencies={
 	"MEIOUandTaxes1"
